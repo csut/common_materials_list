@@ -1,0 +1,86 @@
+<template name="common_material_table____row____edit_mode">
+  <!-- call this template from a live iteration -->
+  <!-- use the caller's data context to populate this template -->
+  <tr class="highlighted">
+    <td>
+      <button id="row--save-button" class="btn btn-default btn-lg margin-bottom-20-px">
+        <img src="disk-icon.svg" alt="">
+      </button>
+
+      <a href="#" class="underline">Cancel</a>
+    </td>
+    <td>
+      <div contenteditable="true" class="form-control">
+        {{commonName}}
+      </div>
+    </td>
+    <td>
+      <div contenteditable="true" class="form-control">
+        {{dimensions}}
+      </div>
+    </td>
+    <td>
+      <div contenteditable="true" class="form-control">
+        {{productionName}}
+      </div>
+    </td>
+    <td>
+      <ul class="list-unstyled lined">
+        {{#each notesInSession}}
+          <li>
+            {{this.content}}
+            &nbsp;
+            <img src="exclamation-icon-{{redOrGrey}}.svg" class="exclamation-note-suffix" alt=""> 
+            &nbsp;
+            <a href="#" class="delete-button glyphicon glyphicon-remove"></a>
+
+            <!-- {{logThis}} -->
+            {{#if thisNoteConfirmingDeletion}}
+              <div class="panel panel-danger">
+                <div class="panel-heading">
+                  Confirm Deletion?
+                </div>
+                <div class="panel-body">
+                  <button id="note--confirm-deletion--delete" class="btn btn-danger btn-sm">
+                    DELETE
+                  </button>
+                  &nbsp;&nbsp;
+                  <a href="#" id="note--confirm-deletion--cancel" class="underline">Cancel</a>
+                </div>
+              </div>
+            {{/if}}
+
+          </li>
+        {{/each}}
+        <li>
+          <div class="input-group" style="max-width: 35em;">
+            <input id="new-note-input" type="text" class="form-control" placeholder="Enter a new Note here">
+            <span class="input-group-btn">
+              <button id="add-note-button" class="btn btn-default {{isAddNoteBtnDisabled}}" type="button">Add Note</button>
+            </span>
+          </div>
+        </li>
+      </ul>
+    </td>
+    <td>
+      <div class="btn-group">
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+          {{#if sessionIsStockedByDESI}}
+            Yes
+          {{else}}
+            No
+          {{/if}}
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li>
+            <a id="is-stocked-by-DESI-dropdown--yes" href="#">Yes</a>
+          </li>
+          <li>
+            <a id="is-stocked-by-DESI-dropdown--no" href="#">No</a>
+          </li>
+        </ul>
+      </div>
+    </td>
+  </tr>
+</template>

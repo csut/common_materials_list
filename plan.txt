@@ -1,0 +1,56 @@
+design and research this project before starting to program it.
+
+code in a very organized manner, from big to structures to small structures.
+
+document code along the way, and build new structures that promote more readily comprehensible code.
+
+-------------------------------------------
+project:
+-------------------------------------------
+quipboard
+quickly create well written correspondence in a uniform style, with a minimum of redundancy and typing
+a user has a library of group wide macros that they can use
+a user has a library of personal macros that they can use
+a macro is created either in the personal or in the group.
+each macro gets a button added to the ui, so that the user just clicks it to add its contents to the working text.
+user can edit text in the main editor
+there is a button to copy all the text to your clipboard
+a macro can prompt you for inputs that it needs to generate its output.
+
+-------------------------------------------
+better project: common_materials_list
+-------------------------------------------
+remake the common material list
+user has to be logged in to make a change
+all changes require a description
+all changes descriptions are stored in a log
+contains common material records:
+  • _id
+  • common_name
+  • default_stock_dimensions
+  • production_name
+  • tags // a material can be tagged with likely uses
+  • warnings
+  • notes
+  • currently_stocked_by_DESI // boolean
+
+displays a list of all the common materials stocks
+
+common name and production name fields have "copy to clipboard" buttons
+list dynamically filters when you search in the search box, looking through tags, and all fields for a match
+
+DONE: users must be logged in to view / edit materials
+
+list of acceptable user's email addresses is stored on the server somewhere?
+
+each field on a stock can be edited, and once it is, a modal dialog appears, describing what field changed from what to what, attributed to current user, as well as a field for additional comments and prompting for an ok/cancel.
+
+if ok, the change description is logged, and the change is made on the server.
+stocks cannot really be deleted by normal users, just deactivated
+inactive stocks are sorted to the bottom of the list.
+Log view shows a chronologically sorted view of all the changes
+common materials list exports a restful api for the stocks, which requires authentication
+
+- make meteor wipe the search (and other?) session variables on reload?
+- write the super minor diffing algorithm for change saving
+DONE - display diffs to user for confirmation

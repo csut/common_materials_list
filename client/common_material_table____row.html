@@ -1,0 +1,59 @@
+<template name="common_material_table____row">
+  <!-- call this template from a live iteration -->
+  <!-- use the caller's data context to populate this template -->
+  <tr>
+    <td>
+      <button class="btn btn-default btn-lg edit-row">
+        <span class="glyphicon glyphicon-pencil"></span>
+      </button>
+    </td>
+    <td>{{commonName}}</td>
+    <td>{{dimensions}}</td>
+    <td>{{productionName}}</td>
+    <!-- <td>
+      <ul class="list-unstyled lined">
+        <li>warning 1</li>
+        <li>warning 2 is a longer warning, which is probably closer to a real life scnario.</li>
+      </ul>
+    </td> -->
+    <td>
+      <!-- notes is a field on the calling templates data context -->
+      <ul class="list-unstyled lined">
+        {{#each notes}}
+          <li>
+            <!-- this if needs some alert status of a note to evaluate -->
+            {{#if this.alert}}
+              <img src="exclamation-icon-red.svg" class="exclamation-note-prefix" alt=""> 
+            {{/if}}
+            {{this.content}}
+          </li>
+        {{/each}}
+      </ul>
+      <!-- <ul class="list-unstyled lined">
+        <li >note 1</li>
+        <li><img src="exclamation-icon-red.svg" style="position: relative; bottom: 4px; margin-left: -13px;"> <span class="red-color">note 2 note 2 , thsihsihsihs</span></li>
+        <li >note 3 is a longer note, which (i think) is more representative of a real world use case, and more likely.</li>
+      </ul> -->
+    </td>
+    <td>
+      <div class="btn-group">
+        <button class="btn btn-default dropdown-toggle disabled" type="button" data-toggle="dropdown">
+          {{#if isStockedByDESI}}
+            Yes
+          {{else}}
+            No
+          {{/if}}
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li>
+            <a href="#">Yes</a>
+          </li>
+          <li>
+            <a href="#">No</a>
+          </li>
+        </ul>
+      </div>
+    </td>
+  </tr>
+</template>

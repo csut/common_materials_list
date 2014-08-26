@@ -1,0 +1,77 @@
+• Setup Git Repo
+            • Data Structures:
+              • TwoDimensions object
+                • fields:
+                  • width: Float
+                  • height: Float
+                  • unit: String
+              • materials
+                • Meteor.Collection
+                • Contains Material objects
+                  • each Material has these fields:
+                    • _id: Integer
+                    • common_name: String
+                    • default_stock_dimensions: TwoDimensions
+                    • production_name: String
+                    • warnings: [String]
+                    • notes: [String]
+                    • currently_stocked_by_DESI: Boolean
+              • Difference object
+                • each Difference object contains these fields:
+                  • fieldName: String (name of field in a Material object)
+                  • newValue: String|Object|Number|Array|...
+              • material_revisions
+                • Meteor.Collection
+                • Contains MaterialRevision objects
+                  • each MaterialRevision has these fields:
+                    • timestamp: 
+                    • copyOfChangedMaterial: Material object
+                    • differenceList: [Difference]
+              • Session.set("material-being-edited", undefined | _id for a Material)
+              • Session.set("common-materials-list-search-term", undefined | String)
+              • Session.set("differences", Difference | [] )
+            // need to graph templates, above this point is obsolete, see chart instead
+• Templates
+                      • header
+                    {{> app_name}}
+                    {{> login_status}}
+                    {{> search_box}}
+              • materials_listing
+                    • app_name
+
+                • login_status
+                    {{> loginButtons}}
+                • app_name
+                    Common Materials List
+                • search_box
+                    input#common-materials-search-field
+                • materials_listing
+                    {{#each materials_list}}
+                    {{#if isThisMaterialListingBeingEdited}}
+                      {{> edit_material_record}}
+                    {{else}}
+                      {{> display_material_record}}
+                    {{#if editButtonsShouldBeDisplayed}}
+                      <button class="edit-button">edit</button>
+                  • display_material_record
+                      • {{ (Material object is data context) }}
+                        {{_id}}
+                        {{common_name}}
+                        {{production_name}}
+                        {{default_stock_dimensions}}
+                        {{warnings}}
+                        {{tags}}
+                        {{currently_stocked_by_DESI}}
+//RESUME: flesh out the two function marked in illustrator, then graph this template
+• confirm_changes_modal
+        {{> list_of_changed_material_properties}}
+                  • edit_material_record
+                      input #common_name value="{{common_name}}"
+                      // input for each property of a Material object you wish to display
+                      button #accept-material-edits
+                      button #cancel-material-edits
+
+
+
+
+

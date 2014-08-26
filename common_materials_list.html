@@ -1,0 +1,145 @@
+<!-- get rid of warnings section, and make each note have a toggleable "priority" status, 
+symbolized by an exclamation point -->
+<head>
+  <title>common_materials_list</title>
+</head>
+<body>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <!-- brand -->
+      <div class="navbar-header">
+        <a class="navbar-brand">Common Materials List</a>
+        <!-- should reset form, bring to initial app state -->
+      </div>
+      <!-- search box -->
+      <form class="navbar-form" role="search">
+        <div class="input-group navbar-right">
+          <input type="text" class="form-control" placeholder="Search Materials">
+          <span class="input-group-btn">
+            <button class="btn btn-default">Submit</button>
+          </span>
+        </div>
+      </form>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Actions</th>
+          <th>Common Name</th>
+          <th>dimensions</th>
+          <th>Production Name</th>
+          <th>Notes</th>
+          <th>Currently Stocked by DESI?</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each commonMaterials}}
+          {{> common_material_table____row}}
+        {{/each}}
+
+        {{#each commonMaterials}}
+          {{> common_material_table____row____edit_mode}}
+        {{/each}}
+        
+
+
+        <tr class="highlighted">
+          <td>
+            <button class="btn btn-default btn-lg margin-bottom-20-px">
+              <img src="disk-icon.svg" alt="">
+            </button>
+
+            <a href="#" class="underline">Cancel</a>
+          </td>
+          <!-- <td><span contenteditable="true" class="editable-text">Common Name</span> -->
+          <td>
+            <div contenteditable="true" class="form-control">
+              Common Name
+            </div>
+            <!-- <textarea rows="5" class="form-control">Common Name sdaf sdf fa sdf fdas  sd  dsfa </textarea> -->
+          </td>
+          <!-- <td><span contenteditable="true" class="editable-text">dimensions</span></td> -->
+          <td>
+            <div contenteditable="true" class="form-control">
+              dimensions
+            </div>
+          </td>
+          <!-- <td><span contenteditable="true" class="editable-text">jdljfkhjl kldsjf kljh dslkajh</span></td> -->
+          <td>
+            <div contenteditable="true" class="form-control">
+              production name
+            </div>
+          </td>
+          <!-- <td>
+            <ul class="list-unstyled lined">
+              <li>warning 1&nbsp;<a href="#" class="glyphicon glyphicon-remove"></a></li>
+              <li>warning 2 is a longer warning, which is probably closer to a real life scnario.&nbsp;<a href="#" class="glyphicon glyphicon-remove"></a></li>
+              <li><button class="btn btn-default">New Warning</button></li>
+            </ul>
+          </td> -->
+          <td>
+            <ul class="list-unstyled lined">
+              <li >
+                note 1
+                &nbsp;
+                <img src="exclamation-icon-grey.svg" alt=""> 
+                &nbsp;
+                <a href="#" class="glyphicon glyphicon-remove"></a>
+              </li>
+              <li>
+                note 2 is now going to be a longer chunk of text so that we can see how to handle that situation with the confirm delete buttons?
+                &nbsp;
+                <img src="exclamation-icon-grey.svg" alt=""> 
+                &nbsp;
+                <a href="#" class="glyphicon glyphicon-remove lightgrey-color"></a>
+                &nbsp;
+                <div class="panel panel-danger">
+                  <div class="panel-heading">
+                    Confirm Deletion?
+                  </div>
+                  <div class="panel-body">
+                    <button class="btn btn-danger btn-sm">
+                      DELETE
+                    </button>
+                    &nbsp;&nbsp;
+                    <a href="#" class="underline">Cancel</a>
+                  </div>
+                </div>
+              </li>
+              <li >note 3 is a longer note, which (i think) is more representative of a real world use case, and more likely.&nbsp;<a href="#" class="glyphicon glyphicon-remove"></a></li>
+              <!-- <li><button class="btn btn-default">New Note</button></li> -->
+              <li>
+                <div class="input-group" style="max-width: 35em;">
+                  <input type="text" class="form-control" placeholder="Enter a new Note here">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Add Note</button>
+                  </span>
+                </div>
+                
+              </li>
+            </ul>
+          </td>
+          <td>
+            <div class="btn-group">
+              <button class="btn btn-default" type="button">Yes</button>
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a href="#">Yes</a>
+                </li>
+                <li>
+                  <a href="#">No</a>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
